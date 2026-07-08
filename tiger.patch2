@@ -56,7 +56,7 @@
  mkdir 'anal';
  `awk -F"\\t" '\$6 == 100 {print}' rfind.gff > anal/tmPure.gff`;
 -my %support; my %supptype = (qw/cmscan rfam aragorn1.2.40 aragorn/);
-+my %support; my %supptype = (qw/cmscan rfam aragorn/);
++my %support; my %supptype = (qw/cmscan rfam aragorn aragorn/);
  for (`intersectBed -nonamecheck -wo -f 0.1 -F 0.1 -e -s -a anal/tmPure.gff -b rfam.gff`, `intersectBed -nonamecheck -wo -f 0.1 -F 0.1 -e -s -a anal/tmPure.gff -b tmrna.gff`) {
   my @f = split "\t"; my $id = "$f[0].$f[3]";
   unless ($support{$id}{$f[10]} and $support{$id}{$f[10]} > $f[14]) {
